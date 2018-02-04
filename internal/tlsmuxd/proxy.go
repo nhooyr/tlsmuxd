@@ -19,7 +19,7 @@ import (
 type ProxyConfig struct {
 	Email    string `json:"email"`
 	CacheDir string `json:"cacheDir"`
-	Hosts map[string][]struct {
+	Hosts    map[string][]struct {
 		Name string `json:"name"`
 		Addr string `json:"addr"`
 	} `json:"hosts"`
@@ -107,10 +107,6 @@ func NewProxy(pc *ProxyConfig) (*Proxy, error) {
 	p.manager.HostPolicy = autocert.HostWhitelist(hostnameList...)
 
 	return p, nil
-}
-
-func (p *Proxy) RedirectHTTP() error {
-
 }
 
 const (
